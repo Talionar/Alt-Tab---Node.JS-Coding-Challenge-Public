@@ -3,11 +3,10 @@
 let router = require('express').Router();
 
 let config = require('../../config.json'),
-    User = require('./../../models/user'),
-    jwt = require('jsonwebtoken');
+      User = require('./../../models/user'),
+      jwt = require('jsonwebtoken');
 
 router.post('/', function(req, res) {
-
     User.findOne({
         email: req.body.email
     }, function(err, user) {
@@ -20,28 +19,26 @@ router.post('/', function(req, res) {
                 password: req.body.password,
                 email: req.body.email
             });
-            // save the sample user
+
             user.save(function(err) {
                 if (err) throw err;
 
                 let token = jwt.sign(user, config.authSecret, {
-                    expiresIn: "1h"
+                    expiresIn: "1h" // One hour is fine enough for test case I think
                 });
 
-                console.log('User created successfully');
+                console.log('User ', user.email, ' created successfully');
                 res.status(201).json({
                     success: true,
                     token: token
                 });
             });
         } else {
-          res.status(400).json({
-              success: false,
-              message: 'User with such email already exists'
-          });
-
+            res.status(400).json({
+                success: false,
+                message: 'User with such email already exists'
+            });
         }
-
     });
 });
 
