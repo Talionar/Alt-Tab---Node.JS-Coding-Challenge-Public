@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "monitor": "nodemon ./app.js",
     "start": "node app.js",
     "test": "mocha --recursive"
   },
   "dependencies": {
-    "express": "~4.11.1"
+    "body-parser": "^1.15.1",
+    "express": "~4.11.1",
+    "jsonwebtoken": "^7.0.0",
+    "mongoose": "^4.4.19"
   },
   "devDependencies": {
     "chai": "^3.5.0",
