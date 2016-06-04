@@ -1,23 +1,7 @@
 ## AltTab coding challenge
 
-### You would need:
-* Node.js
-* MongoDB
+Here is my implementation of your test case. All comments which needed here (from my point of view) placed within code
 
-### Client APP is using:
-* Angular JS
-* Gulp
+But one thing is confusing to me - why do you divide /app_client and /public? Main task is writing backend part - so I just add /lib to /app_client but I still want to know why :)
 
-## Your task:
-* Write an API with Express FW
-* Use the API to authenticate users and store them in MongoDB
-
-* Your API should allow users:
-   * To register
-   * To Login
-   * To Logout
-
-* Your API should pass all integration tests.
-
-### You could:
-* Use any npm library you like
+**Hope to hear from you soon!**
