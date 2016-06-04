@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "monitor": "nodemon ./app.js",
     "start": "node app.js",
-    "test": "mocha --recursive"
+    "test": "mocha ./test --recursive",
+    "monitor": "nodemon ./app.js --exec \"npm run test\""
   },
   "dependencies": {
     "body-parser": "^1.15.1",

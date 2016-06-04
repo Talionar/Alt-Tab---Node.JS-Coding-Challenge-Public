@@ -5,12 +5,14 @@ let express = require('express'),
        bodyParser  = require('body-parser'),
        path = require('path');
 
-let app = module.exports = express();
+// We store global config in separate json file to make config available from nested routes
+let app = module.exports = express(),
+       config =  require('./config.json');
 
-mongoose.connect('mongodb://localhost/alttabtestcase');
+mongoose.connect(config.db);
 
-app.set('authSecret', 'alttabtestcasesupersecret');
 app.set('view engine', 'html');
+
 app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,6 +21,12 @@ app.get('/', function (req, res) {
   res.render('index');
 });
 
+// We use nested routes structure - every folder in "routes" folder is app route
+// Nested folders is nested routes - so you can see structure of api with easy
+// (make new folders only if this route have nested routes, else just make .js file for it)
+
+// Every path must have index.js entry point
+// It's require main file and it contains functions to serve this path and mount nested paths
 app.use('/api', require('./routes/api'));
 
 app.listen(3000, function () {

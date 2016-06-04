@@ -1,0 +1,4 @@
+{
+    "authSecret": "alttabtestcasesupersecret",
+    "db": "mongodb://localhost/alttabtestcase"
+}
